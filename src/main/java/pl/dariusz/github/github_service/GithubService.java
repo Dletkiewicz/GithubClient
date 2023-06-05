@@ -1,21 +1,13 @@
 package pl.dariusz.github.github_service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.HttpMediaTypeNotAcceptableException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-import pl.dariusz.github.exception.UnsupportedHeaderException;
-import pl.dariusz.github.exception.UnsupportedHeaderObjectError;
 import pl.dariusz.github.exception.UserNotFoundException;
 import pl.dariusz.github.github_details.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,26 +38,18 @@ public class GithubService {
         return headers;
     }
 
-    private ResponseEntity<UnsupportedHeaderException> handleMediaType() {
-        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(new UnsupportedHeaderException("wrong headeeeeeer"));
+    public ResponseEntity<String> handleHeader() {
+        String xmlResponse = "<response><Status>406</Status><Message>Wrong header!</Message></response>";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_XML);
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).headers(headers).body(xmlResponse);
     }
 
-    public List<GithubDetails> getAllGithubData(String username, String header) {
+    public List<GithubDetails> getAllGithubData(String username) {
 
-        if (header.equals("application/xml")) {
-            throw new UnsupportedHeaderException("Unsupported header: application/xml");
-        }
         githubDetails.setGithubOwner(getGithubOwner(username));
-        List<GithubRepository> repositories = getUserRepositories(username);
-
-        return repositories.stream()
-                .map(repository -> {
-                    GithubDetails details = new GithubDetails();
-                    details.setGithubOwner(githubDetails.getGithubOwner());
-                    details.setRepositoryList(List.of(repository));
-                    return details;
-                })
-                .collect(toList());
+        githubDetails.setRepositoryList(getUserRepositories(username));
+        return List.of(githubDetails);
     }
 
     private GithubOwner getGithubOwner(String username) {
