@@ -1,4 +1,4 @@
-package pl.dariusz.github.github_details;
+package pl.dariusz.github.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

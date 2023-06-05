@@ -1,4 +1,4 @@
-package pl.dariusz.github.github_details;
+package pl.dariusz.github.entity;
 
 import lombok.Data;
 import lombok.Getter;

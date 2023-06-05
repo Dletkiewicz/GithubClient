@@ -1,4 +1,4 @@
-package pl.dariusz.github.rest_configuration;
+package pl.dariusz.github.configuration;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

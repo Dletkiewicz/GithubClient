@@ -1,5 +1,5 @@
 
-package pl.dariusz.github.github_details;
+package pl.dariusz.github.entity;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;

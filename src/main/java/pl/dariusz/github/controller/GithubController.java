@@ -1,11 +1,11 @@
-package pl.dariusz.github.github_controller;
+package pl.dariusz.github.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.dariusz.github.github_details.GithubDetails;
-import pl.dariusz.github.github_service.GithubService;
+import pl.dariusz.github.entity.GithubDetails;
+import pl.dariusz.github.service.GithubService;
 
 import java.util.List;
 

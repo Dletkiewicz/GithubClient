@@ -1,4 +1,4 @@
-package pl.dariusz.github.github_service;
+package pl.dariusz.github.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -6,7 +6,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.dariusz.github.exception.UserNotFoundException;
-import pl.dariusz.github.github_details.*;
+import pl.dariusz.github.entity.*;
 
 import java.util.List;
 import java.util.Map;

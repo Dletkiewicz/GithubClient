@@ -7,16 +7,15 @@ import org.springframework.http.*;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 import pl.dariusz.github.exception.UserNotFoundException;
-import pl.dariusz.github.github_details.GithubDetails;
-import pl.dariusz.github.github_details.GithubOwner;
-import pl.dariusz.github.github_service.GithubService;
+import pl.dariusz.github.entity.GithubDetails;
+import pl.dariusz.github.entity.GithubOwner;
+import pl.dariusz.github.service.GithubService;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
